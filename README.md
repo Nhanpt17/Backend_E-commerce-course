@@ -11,7 +11,7 @@
    src/main/resources/application.properties
    ```
 4. Make sure MySQL is running
-5. Press **Run ▶️** — done ✅
+5. Select **JDK 18** → **Run ▶️** — done ✅
 
 ---
 
@@ -28,21 +28,22 @@ You only need:
 
 * **IntelliJ IDEA** (Community or Ultimate)
 * **MySQL 8+**
+* **JDK 18**
 
-> 💡 IntelliJ automatically manages JDK and Maven for you.
-> Just make sure to use **Java 17+** when prompted.
+> 💡 IntelliJ automatically manages Maven for you.
+> Just make sure to select **JDK 18** when setting up the project.
 
 ---
 
 ## 🗂️ 2. Configure Database and Local Settings
 
-Open this file:
+Open the file below:
 
 ```
 src/main/resources/application.properties
 ```
 
-Edit it according to your local setup:
+Update your database information:
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/<your database>
@@ -59,7 +60,7 @@ spring.datasource.password=<your password>
 
 ## 🔐 3. OAuth2 Configuration (Google / Facebook)
 
-If you have OAuth apps created, replace these values:
+If you have Google or Facebook OAuth apps, set these values:
 
 ```properties
 spring.security.oauth2.client.registration.google.client-id=<your client id>
@@ -69,13 +70,13 @@ spring.security.oauth2.client.registration.facebook.client-id=<your client id>
 spring.security.oauth2.client.registration.facebook.client-secret=<your client secret>
 ```
 
-If not, leave them blank — the backend will still work locally.
+If you don’t use OAuth locally, you can leave them blank.
 
 ---
 
 ## 📧 4. Email Configuration (SMTP)
 
-If the project uses email features, set your credentials:
+If the project sends emails, configure your email:
 
 ```properties
 spring.mail.username=<your email>
@@ -90,7 +91,7 @@ spring.mail.password=<your password>
 
 ## 💻 5. Frontend Configuration
 
-If your frontend runs locally (e.g., Angular), update:
+If you have a frontend (e.g., Angular), update:
 
 ```properties
 app.client.url=http://localhost:4200
@@ -104,18 +105,22 @@ frontend.redirect-url=http://localhost:4200/customer/handle-payment-momo
 1. Open **IntelliJ IDEA**
 2. Go to **File → Open...** → select the project folder
 3. Wait for IntelliJ to load dependencies
-4. Open:
+4. Set the JDK version:
+
+   * Go to **File → Project Structure... → Project**
+   * In **SDK**, choose **JDK 18**
+5. Open:
 
    ```
    src/main/java/com/yourpackage/GraduateProjectApplication.java
    ```
-5. Click **Run ▶️** (or press `Shift + F10`) to start the server.
+6. Click **Run ▶️** (or press `Shift + F10`) to start the server.
 
 ---
 
 ## 🌐 7. Check the Application
 
-Once started, open:
+Once the project starts, open:
 
 ```
 http://localhost:8080
@@ -126,8 +131,3 @@ Frontend (if available):
 ```
 http://localhost:4200
 ```
-
----
-
-
-
