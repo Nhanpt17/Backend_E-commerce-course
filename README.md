@@ -131,3 +131,19 @@ Frontend (if available):
 ```
 http://localhost:4200
 ```
+## 🧩 8. Database — Restore Using MySQL Workbench (Recommended)
+
+**Steps to restore the database using MySQL Workbench:**
+
+1. Open **MySQL Workbench** and log in to your MySQL server.  
+
+2. Create a new database:
+   ```sql
+   CREATE DATABASE graduate_schema;
+   USE graduate_schema;
+Open the file graduate_schema_dump.sql in Workbench.
+
+Press Ctrl + A → F5 (Run all) to execute the entire script.
+
+Wait until Workbench finishes executing.
+Then, check the list of tables — if all tables appear, you’re ✅ done restoring the database successfully.
