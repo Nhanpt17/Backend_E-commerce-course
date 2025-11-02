@@ -146,4 +146,4 @@ Open the file graduate_schema_dump.sql in Workbench.
 Press Ctrl + A → F5 (Run all) to execute the entire script.
 
 Wait until Workbench finishes executing.
-Then, check the list of tables — if all tables appear, you’re ✅ done restoring the database successfully.
+Then, check the list of tables — if all tables appear, you’re ✅ done restoring the database successfully..............
