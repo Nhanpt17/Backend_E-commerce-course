@@ -35,7 +35,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         return httpSecurity.csrf(customer ->customer.disable())
                 .authorizeHttpRequests(request->request
-                        .requestMatchers("/authenticate","/reset/**","/api/file-upload","/sign-up","/vouchers/**","/cookie","/api/momo/**").permitAll()
+                        .requestMatchers("/authenticate","/reset/**","/api/file-upload","/sign-up","/vouchers/**","/cookie","/api/momo/**","/api/mailchimp/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/customer/reviews/product/*").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/customer/reviews/product/*/stats").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/customer/reviews/limit-product").permitAll()
