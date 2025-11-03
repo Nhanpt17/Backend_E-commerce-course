@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.core.annotation.Order;
 
 @Configuration
 @EnableWebSecurity
@@ -32,6 +33,29 @@ public class SecurityConfig {
     }
 
     @Bean
+    @Order(0)
+    public SecurityFilterChain webhookChain(HttpSecurity http) throws Exception {
+        return http
+                .securityMatcher("/api/webhook/**")
+                .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.configurationSource(request -> {
+                    var c = new org.springframework.web.cors.CorsConfiguration();
+                    c.addAllowedOriginPattern("*");
+                    c.addAllowedMethod("*");
+                    c.addAllowedHeader("*");
+                    c.setAllowCredentials(false);
+                    return c;
+                }))
+                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
+                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .httpBasic(h -> h.disable())
+                .formLogin(f -> f.disable())
+                .build();
+    }
+
+
+
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         return httpSecurity.csrf(customer ->customer.disable())
                 .authorizeHttpRequests(request->request
@@ -46,9 +70,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/order/**").hasAnyRole("STAFF","DELIVERY","ADMIN")
                         .requestMatchers("/api/products/**").permitAll()
                         .anyRequest().authenticated())
-                .httpBasic(Customizer.withDefaults())
-                .oauth2Login(oauth2 -> oauth2
-                        .successHandler(customOAuth2SuccessHandler))
+//                .httpBasic(Customizer.withDefaults())
+//                .oauth2Login(oauth2 -> oauth2
+//                        .successHandler(customOAuth2SuccessHandler))
                 .sessionManagement(session ->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
