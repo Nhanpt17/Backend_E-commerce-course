@@ -2,5 +2,7 @@ package com.human.graduateproject.enums;
 
 public enum PaymentMethod {
     CASH, // TIEN MAT
-    MOMO // MOMO
+    MOMO, // MOMO
+    PAYPAL, // PAYPAL
+    VNPAY // VNPAY
 }
