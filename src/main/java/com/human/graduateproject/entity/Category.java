@@ -20,8 +20,8 @@ public class Category {
 
     private String name;
 
-    @Lob // luc dung mysql thi bo lai
-    //@Column(columnDefinition = "TEXT") // luc chuyen qua mysql thi bỏ đi
+    //@Lob // luc dung mysql thi bo lai
+    @Column(columnDefinition = "TEXT") // luc chuyen qua mysql thi bỏ đi
     private String description;
 
 
