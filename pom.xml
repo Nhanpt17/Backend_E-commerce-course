@@ -96,7 +96,12 @@
 			<version>0.0.20131108.vaadin1</version>
 		</dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
+        </dependency>
 
 		<dependency>
 			<groupId>com.mysql</groupId>

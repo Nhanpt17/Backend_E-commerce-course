@@ -33,8 +33,8 @@ public class Product {
     @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
     private Boolean enable = true; // soft delete
 
-    @Lob //luc dung mysql thi bo lai
-    //@Column(columnDefinition = "TEXT")// qua ben mysql thi bo cai nay di
+    //@Lob //luc dung mysql thi bo lai
+    @Column(columnDefinition = "TEXT")// qua ben mysql thi bo cai nay di
     private String description;
 
 //    @Lob
